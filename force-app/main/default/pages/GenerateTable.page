@@ -1,0 +1,17 @@
+<apex:page controller="MyFirstClass">
+    <apex:form >
+    
+        <apex:actionFunction name="hitMe" action="{!iWantMyJSValues}" rerender="jsvalues">
+            <apex:param name="FirstJSParameter" value="" />
+            <apex:param name="SecondJSParameter" value="" />
+        </apex:actionFunction>
+       
+        <apex:outputPanel id="jsvalues">
+            <apex:outputText value="Value of FirstJSParameter: {!valueOne}" /><br/>
+            <apex:outputText value="Value of SecondJSParameter: {!valueTwo}" /><br />           
+        </apex:outputPanel>
+       
+        <span style="cursor: pointer;"
+            onclick="hitMe(Date(), 'best shot')">Hit Me</span>
+    </apex:form>
+</apex:page>

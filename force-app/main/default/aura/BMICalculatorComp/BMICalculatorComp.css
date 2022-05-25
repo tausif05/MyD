@@ -1,0 +1,26 @@
+.THIS {
+}
+.THIS.Button{
+    background-color:red;
+    color:green;
+}
+.THIS.bmiNormal
+{
+   width:333px;
+   height:100px;
+   padding:10px;
+   margin :4px;
+   border-radius:24px;
+   background-color:green;
+   color:while; 
+}
+.THIS.bmiNotNormal
+{
+   width:333px;
+   height:100px;
+   padding:10px;
+   margin :4px;
+   border-radius:24px;
+   background-color:Red;
+   color:while; 
+}

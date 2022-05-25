@@ -1,0 +1,15 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global"  >
+    <aura:attribute name="guestName" type="String" ></aura:attribute>
+ 	<aura:attribute name="guestHeight" type="String" default="165" ></aura:attribute> 
+     <aura:attribute name="guestWeight" type="String" default="65"></aura:attribute>
+     <aura:attribute name="BMICategory" type="String" ></aura:attribute>
+    
+   <ui:inputText label="Enter Your Name" class="slds-input" value="" aura:id="gName"></ui:inputText>
+   <ui:inputText label="Enter Height in CMs" class="slds-input" value="{!v.guestHeight}"></ui:inputText>
+   <ui:inputText label="Enter Your weight in KGs"  value="{!v.guestWeight}"></ui:inputText>
+   <ui:button label="Submit" class="slds-button slds-button_success" press="{!c.calculateBMI}"></ui:button>
+    <hr></hr>
+    <div class="{!v.BMICategory=='NORMAL-WEIGHT'?'bmiNormal' :'bmiNotNormal'}">
+<ui:outputText   value="{! 'Hi ' + v.guestName + '\n' + 'Your BMI Category is: ' + v.BMICategory}"></ui:outputText>
+    </div>
+</aura:component>

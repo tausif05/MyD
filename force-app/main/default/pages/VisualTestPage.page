@@ -1,0 +1,28 @@
+<apex:page sidebar="false" showHeader="true" standardController="Account" recordSetVar="accounts">
+<style>
+.myclass{
+font-weight:bold;
+}
+</style>
+  <!-- Begin Default Content REMOVE THIS -->
+  <h1>Congratulations</h1>
+  <u><b>Welcome</b></u>
+<p class="myclass">Hello  {!$User.Firstname}</p>
+
+<apex:panelGroup id="pG">
+<apex:pageblock title="My Page">
+<apex:pageBlockSection collapsible="false" title="My Page Section">
+<apex:pageBlockSectionItem >
+sasasas
+</apex:pageBlockSectionItem>
+</apex:pageBlockSection>
+</apex:pageblock>
+</apex:panelGroup>
+
+
+<apex:pageBlock >
+<apex:pageBlockTable value="{!accounts}" var="a">
+<apex:column value="{!a.name}"/>
+</apex:pageBlockTable>
+</apex:pageBlock>
+</apex:page>

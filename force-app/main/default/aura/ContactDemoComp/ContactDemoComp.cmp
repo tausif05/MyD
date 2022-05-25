@@ -1,0 +1,49 @@
+<aura:component implements="force:appHostable,flexipage:availableForRecordHome">
+<aura:attribute name="myText" type="string" default="Hello there!"/>
+    <p class="slds-box slds-text-heading_small">Action icons represent actions a user can take. The default size of
+        action icons are larger than the others. <br /><br />
+        <lightning:icon iconName="action:approval" alternativeText="Approved" title="Approved" />
+        <lightning:icon iconName="action:delete" alternativeText="Delete" title="Delete" />
+        <lightning:icon iconName="action:new_note" alternativeText="New note" title="New note" />
+        <lightning:icon iconName="action:preview" alternativeText="Preview" title="Preview" />
+    </p>
+    <p class="slds-box slds-text-heading_small">Doctype icons represent a type of file when a preview or image is unavailable. <br /><br />
+        <lightning:icon iconName="doctype:audio" alternativeText="Audio file" title="Audio" />
+        <lightning:icon iconName="doctype:image" alternativeText="Image file" title="Image" />
+        <lightning:icon iconName="doctype:mp4" alternativeText="MP4 file" title="MP4" />
+        <lightning:icon iconName="doctype:xml" alternativeText="XML file" title="XML" />
+    </p>
+
+    <p class="slds-box slds-text-heading_small">Standard icons represent entities and objects within Salesforce.
+        <br /><br />
+        <lightning:icon iconName="standard:event" alternativeText="Event" title="Event" />
+        <lightning:icon iconName="standard:account" alternativeText="Account" title="Account" />
+        <lightning:icon iconName="standard:address" alternativeText="Address" title="Address" />
+        <lightning:icon iconName="standard:email" alternativeText="Email" title="Email" />
+    </p>
+
+
+    <p class="slds-box slds-text-heading_small">Utility icons are used throughout the interface and are SVGs for extensibility. <br /><br />
+        <lightning:icon iconName="utility:connected_apps" alternativeText="Connected" title="Connected" />
+        <lightning:icon iconName="utility:warning" alternativeText="Warning!" title="Warning" />
+        <lightning:icon iconName="utility:error" alternativeText="Error!" title="Error" />
+        <lightning:icon iconName="utility:image" alternativeText="Utility image" title="Image" />
+    </p>
+
+    <p class="slds-box slds-text-heading_small">Custom icons are available in Salesforce to represent user created objects. <br /><br />
+        <lightning:icon iconName="custom:custom11" title="custom11" />
+        <lightning:icon iconName="custom:custom45" title="custom33" />
+        <lightning:icon iconName="custom:custom51" title="custom51" />
+        <lightning:icon iconName="custom:custom88" title="custom88" />
+    </p>
+    <br/>
+    <ui:inputEmail aura:id="email" label="Email" class="field" value="manager@email.com"/>  
+    <ui:button class="btn" label="Submit" press="{!c.setOutput}"/>	
+
+	<div aura:id="msg" class="hide">
+	    You entered: <ui:outputEmail aura:id="oEmail" value="Email" />
+	</div>
+    <ui:message  aura:id="Info" class="hide" title="Information" severity="info" closable="true">
+			This is a message.
+	</ui:message>
+</aura:component>

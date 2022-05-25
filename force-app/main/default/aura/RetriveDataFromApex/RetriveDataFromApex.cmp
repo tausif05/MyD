@@ -1,0 +1,49 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" controller="AttributeTypes" >
+	<aura:attribute name="favoriteColors" type="String[]" default="cyan, yellow, magenta"/>
+    <aura:attribute name="color" type="String" required="true" default="Black"/>
+    <aura:attribute name="numbers" type="List"/>
+    <aura:attribute name="edit" type="Boolean" default="false"/>
+    <aura:attribute name="parentAttr" type="String" default="parent attribute"/>
+    <aura:attribute name="liked" type="Boolean" default="false"/>
+    
+    <aura:iteration items="{!v.favoriteColors}" var="s">
+        <br/>{!s}
+    </aura:iteration>
+    <br/>
+    <lightning:button onclick="{!c.getString}" label="Update"></lightning:button>
+    <br/>
+    <lightning:button onclick="{!c.getNumbers}" label="Display Numbers" class="slds-button slds-button_brand" />
+    <aura:iteration items="{!v.numbers}" var="num">{!num.value}</aura:iteration>
+    <br/>
+    <c:parent onclick="{!c.parentAction}" childAttr="{v.parentAttr}"></c:parent>
+    <br/>
+    <aura:if isTrue="{!v.edit}">
+	<lightning:button label="Edit"/>
+    <lightning:button label="Cancel" onclick="{!c.hideEdit}"/>    
+	<aura:set attribute="else">
+		You can’t edit this.
+		</aura:set>
+	</aura:if>
+    ---------------
+    <!-- Instantiate the child component -->
+
+<p>parentExpr parentAttr: {!v.parentAttr}</p>
+<p><lightning:button label="Update parentAttr"
+onclick="{!c.updateParentAttr}"/></p>
+    
+    ------------------
+    <br/>
+    <lightning:button label="Check Browser" onclick="{!c.checkBrowser}"></lightning:button>
+    {!$Browser.isTablet}<br/>
+{!$Browser.isPhone}<br/>
+{!$Browser.isAndroid}<br/>
+{!$Browser.formFactor}<br/>
+    {!$Locale.country}<br/>
+    {!$Locale.currencyCode}<br/>
+    {!$Locale.grouping}<br/>
+    {!$Locale.language}<br/>
+    {!$Locale.currencyFormat}
+    <br/><br/><br/>
+    <lightning:button aura:id="likeBtn" label="{!(v.liked) ? 'Like It' : 'Unlike It'}" onclick="{!(v.liked) ? c.likeIt : c.unlikeIt}" />
+    <lightning:buttonStateful ></lightning:buttonStateful>
+    </aura:component>

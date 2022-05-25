@@ -1,0 +1,3 @@
+<aura:component >
+    <c:ComponentEventChild></c:ComponentEventChild>
+</aura:component>

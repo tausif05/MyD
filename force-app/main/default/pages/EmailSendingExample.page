@@ -1,0 +1,5 @@
+<apex:page controller="EmailProgramsClass" >
+    <apex:form >
+    <apex:commandButton value="Send Single Email" action="{!SendSingleEmail}"/>
+    </apex:form>
+</apex:page>

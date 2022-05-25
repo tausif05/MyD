@@ -1,0 +1,3 @@
+<aura:event type="Component" description="For Greeting the volunteer" >
+<aura:attribute name="greetMessage" type="String"></aura:attribute>
+</aura:event>

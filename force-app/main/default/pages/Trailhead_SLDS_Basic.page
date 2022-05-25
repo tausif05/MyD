@@ -1,0 +1,159 @@
+<apex:page standardController="Account" showHeader="false" standardStylesheets="false" sidebar="true" applyHtmlTag="false" applyBodyTag="false" docType="html-5.0">
+<html xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="x-ua-compatible" content="ie=edge" />
+  <title>Salesforce Lightning Design System Trailhead Module</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <!-- Import the Design System style sheet -->
+  <apex:slds />
+</head>
+<body>
+  <!-- REQUIRED SLDS WRAPPER -->
+  <div class="slds-scope">
+    <!-- MASTHEAD -->
+    <p class="slds-text-heading--label slds-m-bottom--small">
+      Salesforce Lightning Design System Trailhead Module
+    </p>
+    <!-- / MASTHEAD -->
+    <!-- PRIMARY CONTENT WRAPPER -->
+    <div class="myapp">
+      <!-- SECTION - BADGE COMPONENTS -->
+      <section aria-labelledby="badges">
+        <h2 id="badges" class="slds-text-heading--large slds-m-vertical--large">Badges</h2>
+        <div>
+          <span class="slds-badge">Badge</span>
+          <span class="slds-badge slds-theme--inverse">Badge</span>
+        </div>
+      </section>
+      <!-- / SECTION - BADGE COMPONENTS -->
+    </div>
+    <!-- / PRIMARY CONTENT WRAPPER -->
+      <br/>
+    <div class="slds-grid">
+  <div class="slds-col">Column 1</div>
+  <div class="slds-col">Column 2</div>
+  <div class="slds-col">Column 3</div>
+</div>
+      <br/>
+      <!-- BASIC GRID EXAMPLE -->
+<div class="slds-grid">
+  <div class="slds-col slds-size_4-of-6">Column 1</div>
+  <div class="slds-col slds-size_1-of-6">Column 2</div>
+  <div class="slds-col slds-size_1-of-6">Column 3</div>
+</div>
+      <br/>
+      <!-- RESPONSIVE GRID EXAMPLE -->
+<div class="slds-grid slds-wrap" style="border:1px;">
+  <div class="slds-col slds-size_1-of-1 slds-small-size_1-of-2 slds-medium-size_3-of-4">A</div>
+  <div class="slds-col slds-size_1-of-1 slds-small-size_1-of-2 slds-medium-size_1-of-4">B</div>
+</div>
+      <br/>
+      <!-- PAGE HEADER -->
+<div class="slds-page-header" role="banner">
+  <div class="slds-grid">
+    <div class="slds-col slds-has-flexi-truncate">
+      <!-- HEADING AREA -->
+      <p class="slds-text-title_caps slds-line-height_reset">Accounts</p>
+      <h1 class="slds-page-header__title slds-truncate" title="My Accounts">My Accounts</h1>
+      <!-- / HEADING AREA -->
+    </div>
+    <div class="slds-col slds-no-flex slds-grid slds-align-top">
+      <button class="slds-button slds-button_brand">New Account</button>
+    </div>
+  </div>
+  <div class="slds-grid">
+    <div class="slds-col slds-align-bottom slds-p-top_small">
+      <p class="slds-text-body_small">COUNT items</p>
+    </div>
+  </div>
+    
+</div>
+<!-- / PAGE HEADER -->
+<!-- PRIMARY CONTENT WRAPPER -->
+<div class="myapp">
+  <ul class="slds-list_dotted slds-m-top_large">
+    <li>Account 1</li>
+    <li>Account 2</li>
+    <li>Account 3</li>
+    <li>Account 4</li>
+    <li>Account 5</li>
+    <li>Account 6</li>
+    <li>Account 7</li>
+    <li>Account 8</li>
+    <li>Account 9</li>
+    <li>Account 10</li>
+  </ul>
+</div>
+      <!-- FOOTER -->
+<footer role="contentinfo" class="slds-p-around_large">
+  <!-- LAYOUT GRID -->
+  <div class="slds-grid slds-grid_align-spread">
+    <p class="slds-col">Salesforce Lightning Design System Example</p>
+    <p class="slds-col">&copy; Tausif Jawed</p>
+  </div>
+  <!-- / LAYOUT GRID -->
+</footer>
+<!-- / FOOTER -->
+
+<!-- / PRIMARY CONTENT WRAPPER -->
+      <br/>
+      <div class="demo-only slds-size_3-of-4">
+  <div class="slds-media slds-media_center">
+    <div class="slds-media__figure">
+      <span class="slds-avatar slds-avatar_large">
+        <img alt="Person name" src="/assets/images/avatar3.jpg" title="User avatar" />
+      </span>
+    </div>
+    <div class="slds-media__body">
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat minus molestias reprehenderit consequuntur sapiente. Modi veritatis totam accusantium numquam assumenda.</p>
+    </div>
+  </div>
+</div>
+      <br/>
+      <table class="slds-table slds-table_bordered slds-table_cell-buffer slds-no-row-hover">
+  <thead>
+    <tr class="slds-text-heading_label">
+      <th scope="col">Account ID</th>
+      <th scope="col">Account name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">123</th>
+      <td>Account 1</td>
+    </tr>
+    <tr>
+      <th scope="row">456</th>
+      <td>Account 2</td>
+    </tr>
+  </tbody>
+</table>
+<div class="slds-media__body">
+     <p >Current User Name : {!$user.FirstName & '  ' & $user.LastName}   </p>
+      <p>Current Date And Time :{!Today()}   </p>
+      <p>What will be the Next Week :{!Today()+7}   </p>
+      <p>What will be the Next Week :{!Today()+7}   </p>
+    <p> Maximum Number from the list is :{!max(1,10,100,200)}   </p>
+    <p> Square Root :{!sqrt(81)}   </p>
+        <p> Is Value True ? :{! if(contains("Md.Tausif Jawed Ansari","Jawed"),"Yes Tausif","No Tausif")}   </p>
+    <p>Tomorrow is :{! DAY(TODAY() + 1)}     </p>
+    <p> Year of the today :{!Year(today())}   </p>
+  </div>
+  <!-- / REQUIRED SLDS WRAPPER -->
+      
+    <br/>
+      <apex:form >
+          <apex:pageBlock title="Account Details"> 
+          <apex:pageBlockSection title="My Content Section" columns="2">
+               <apex:inputField value="{!account.name}"/>
+               <apex:inputField value="{!account.type}"/>
+              <apex:inputField value="{!account.accountNumber}"/>
+          </apex:pageBlockSection>
+            <apex:pageBlockButtons > <apex:commandButton action="{!save}" value="Save" /></apex:pageBlockButtons>
+          </apex:pageBlock>
+    </apex:form>
+</div>
+</body>
+</html>
+</apex:page>

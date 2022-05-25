@@ -1,0 +1,6 @@
+<aura:component >
+<aura:registerEvent name="grtEvt" type="c:greeting"></aura:registerEvent>
+<aura:attribute name="msg" type="String"></aura:attribute>    
+<lightning:input label="Enter Message Here" class="slds-input" value="{!v.msg}"></lightning:input>
+    <lightning:button onclick="{!c.dofire}" label="Fire Now"></lightning:button>
+</aura:component>

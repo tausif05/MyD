@@ -1,0 +1,11 @@
+<!-- child.cmp -->
+<aura:component>
+<aura:attribute name="onclick" type="Aura.Action"/>
+<aura:attribute name="childAttr" type="String" />
+<p>Child component with Aura.Action attribute</p>
+<lightning:button label="Execute the passed action" onclick="{!v.onclick}"/>
+    <br/>
+<p>childExpr childAttr: {!v.childAttr}</p>
+<p><lightning:button label="Update childAttr"
+onclick="{!c.updateChildAttr}"/></p>    
+</aura:component>

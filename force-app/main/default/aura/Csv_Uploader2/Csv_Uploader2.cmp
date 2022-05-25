@@ -1,0 +1,162 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" controller="ContactListController2" >
+	
+
+    <ltng:require scripts="/resource/JQ/js/jquery.min.js"/>
+    <aura:attribute name="accounts" type="account[]"/>
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <aura:attribute name="singleAcc" type="account[]"/>
+    <aura:attribute name="newAccount" type="Account" default="{'sobjectType':'Account'}"/>
+    <aura:attribute name="accList" type="Account[]" />
+            <div class="slds-page-header" role="banner">
+          <div class="slds-media">
+            <div class="slds-media__figure">
+          <h1 class="slds-page-header__title">Accounts</h1>
+            </div>
+            <div class="slds-media__body">
+              <p>Details Of Accounts</p>
+            </div>
+              <lightning:button variant="brand" label="Download Csv" iconName="utility:download" iconPosition="left" onclick="{!c.downloadCsv}" />
+              <lightning:button variant="brand" label="New" iconName="utility:new" iconPosition="left" onclick="{!c.newAccount }" />
+          </div>
+        </div>
+<div id="save_notification" style="display:none; text-align:center;">
+<h3>Your Data Successfully Saved.</h3>
+</div>
+<div id="delete_notification" style="display:none; text-align:center;">
+<h3>Your Data Successfully Deleted.</h3>
+</div>
+
+<!-- For New Window of Account Start -->
+<div id="PreviewpopupForNewAccount" style="display: none;">
+<div class="demo-only" style="height: 640px;">
+  <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+    <div class="slds-modal__container">
+      <header class="slds-modal__header">
+        <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" onclick="{!c.CancelNew}" title="Close">
+          <!--<svg class="slds-button__icon slds-button__icon_large" aria-hidden="true">
+            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
+          </svg> //-->
+          <span class="slds-assistive-text">Close</span>
+        </button>
+        <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Your Account Details</h2>
+        <p class="slds-m-top_x-small">Details Of Your Page Here !</p>
+      </header>
+      <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+      <form>
+        <ui:inputText aura:id="newAccountName" label="Account Name"
+                        class="slds-input"
+                        labelClass="slds-form-element__label"
+                        value="{!v.newAccount.Name}"
+                        required="true"/>
+    <ui:inputText aura:id="numberOfEmployees" label="Number Of Employees"
+                        class="slds-input"
+                        labelClass="slds-form-element__label"
+                        value="{!v.newAccount.NumberOfEmployees}"
+                        required="true"/>
+         <ui:inputText aura:id="accountNumber" label="Account Number"
+                        class="slds-input"
+                        labelClass="slds-form-element__label"
+                        value="{!v.newAccount.AccountNumber}"
+                        required="true"/>
+   <ui:inputText aura:id="phone" label="Phone"
+                        class="slds-input"
+                        labelClass="slds-form-element__label"
+                        value="{!v.newAccount.Phone}"
+                        required="true"/>
+   <ui:inputText aura:id="annualRevenue" label="Annual Revenue"
+                        class="slds-input"
+                        labelClass="slds-form-element__label"
+                        value="{!v.newAccount.AnnualRevenue}"
+                        required="true"/>
+  </form>
+      </div>
+      <footer class="slds-modal__footer">
+        <button class="slds-button">
+            <lightning:button iconName="utility: save" label="Save" onclick="{!c.newSaveAcc}"/>
+            <lightning:button iconName="utility: close" label="Cancel" onclick="{!c.CancelNew}"/>
+        </button>
+      </footer>
+    </div>
+  </section>
+  <div class="slds-backdrop slds-backdrop_open"></div>
+</div>   
+</div>
+<!-- For New Window of Account Finish -->
+<!-- Whole Account Details show here (Start) -->
+<table id="details" class="slds-table slds-table_bordered slds-table_cell-buffer">
+    <thead>
+        <tr class="slds-text-title_caps">
+            <th scope="col">
+             <div class="slds-truncate"><h1>Account Name</h1></div>
+            </th>
+            <th scope="col">
+             <div class="slds-truncate"><h1>No Of Employees</h1></div>
+            </th>
+            <th scope="col">
+                <div class="slds-truncate"><h1>View / Edit</h1></div>
+            </th>
+            <th scope="col">
+             <div class="slds-truncate"><h1>Delete</h1></div>
+            </th>
+        </tr>
+    </thead>
+ <tbody>
+        <aura:iteration items="{!v.accounts}" var="account">
+        <tr>
+            <td data-label="Account Name">
+                <div class="slds-truncate" title="Cloudhub">{!account.Name}</div>
+            </td>
+            <td data-label="Account NumberOfEmployees">
+                <div class="slds-truncate" title="Cloudhub">{!account.NumberOfEmployees}</div>
+            </td>
+            <td data-label="Account Preview And Edit">
+            <!-- <a href="" onclick="{!c.AccPreview}">VIEW<input type="text" id="ac" value="{!account.Name}" /></a> -->
+            <lightning:button variant="brand" label="View" iconName="utility:preview" iconPosition="left" onclick="{! c.AccPreview }" value="{!account.Id}" />
+              <!--   <button class="slds-button" id="acc_id" onclick="{!c.AccPreview}">
+                    <a><input type="hidden" id="acc" value="{!account.Id}" /><lightning:icon iconName="action:preview"/></a>
+                </button>  -->
+            </td>
+            <td data-label="Account Delete">
+                <lightning:button variant="brand" label="Delete" iconName="utility:delete" iconPosition="left" onclick="{! c.AccDelete }" value="{!account.Id}" />
+            </td>
+        </tr>
+        </aura:iteration>
+ </tbody>
+</table>
+<!-- For Preview Window Start -->
+<div id="Previewpopup" style="display: none;">
+<div class="demo-only" style="height: 640px;">
+  <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+    <div class="slds-modal__container">
+      <header class="slds-modal__header">
+        <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" onclick="{!c.Cancel}" title="Close">
+          <!--<svg class="slds-button__icon slds-button__icon_large" aria-hidden="true">
+            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
+          </svg> //-->
+          <span class="slds-assistive-text">Close</span>
+        </button>
+        <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Your Account Details</h2>
+        <p class="slds-m-top_x-small">Details Of Your Page Here !</p>
+      </header>
+      <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+       <aura:iteration items="{!v.singleAcc}" var="acc">
+         <lightning:input aura:id="accountName" name="accountName" label="Account Name" value="{!acc.Name}" />
+            <lightning:input aura:id="numberOfEmployees" name="NumberOfEmployees" label="Number Of Employees" value="{!acc.NumberOfEmployees}" />
+            <lightning:input aura:id="accountNumber" name="accountNumber" label="Account Number" value="{!acc.AccountNumber}" />
+            <lightning:input aura:id="phone" name="phone" label="Phone" value="{!acc.Phone}" />
+            <lightning:input aura:id="annualRevenue" name="annualRevenue" label="Annual Revenue" value="{!acc.AnnualRevenue}" />
+  </aura:iteration> 
+      </div>
+      <footer class="slds-modal__footer">
+        <button class="slds-button">
+            <lightning:button iconName="utility: save" label="Save" onclick="{!c.saveAcc}"/>
+            <lightning:button iconName="utility: close" label="Cancel" onclick="{!c.Cancel}"/>
+        </button>
+      </footer>
+    </div>
+  </section>
+  <div class="slds-backdrop slds-backdrop_open"></div>
+</div>   
+</div>
+<!-- For Preview Window Finish -->
+</aura:component>

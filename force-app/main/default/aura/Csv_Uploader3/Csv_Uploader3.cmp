@@ -1,0 +1,18 @@
+<aura:component controller="UploadAccountfromLEX" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId" access="global">
+    
+    <aura:attribute name="ShowModule" type="boolean" default="false"/>
+    <aura:attribute name="showcard" type="boolean" default="false"/>
+
+    <div>
+        <input type="file" variant="brand" class="file" aura:id="file" onchange="{!c.showfiledata}"/>
+        <ui:button label="Create Accounts" press="{!c.CreateRecord}"/>
+    </div>
+    
+    <aura:if isTrue = "{!v.showcard}">
+         <lightning:card>
+            <div id="divCSV">
+            </div>  
+        </lightning:card>
+    </aura:if>
+    
+</aura:component>

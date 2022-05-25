@@ -1,0 +1,26 @@
+<aura:component implements="flexipage:availableForAllPageTypes" controller="ContactController">
+<aura:attribute name="contacts" type="Contact[]"/>
+   <aura:attribute name="totalContacts" type="Integer"/>
+<aura:attribute name="columns" type="List"/>
+    <aura:attribute name="hasData" type="boolean" default="fasle"/>
+<aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+         <lightning:card title="Contact Details">
+     
+             
+    <aura:if isTrue="{!v.hasData}">
+   <!-- the container element determine the height of the datatable -->
+    <div style="height: 300px">
+        <lightning:datatable
+                keyField="id"
+                data="{! v.contacts }"
+                columns="{! v.columns }"
+                hideCheckboxColumn="true"
+                 
+                             />  
+    </div>
+    <aura:set attribute="else">
+     NO Data Found
+    </aura:set>
+  </aura:if> 
+    </lightning:card>
+</aura:component>

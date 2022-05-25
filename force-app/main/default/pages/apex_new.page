@@ -1,0 +1,18 @@
+<apex:page standardController="Suggestion__c" docType="html-5.0">
+<apex:slds />
+<apex:sectionHeader title="Suggestion Edit" subtitle="Suggestion New"/>
+<apex:form >
+<apex:pageblock title="Suggestion Edit" mode="edit">
+<apex:pageBlockButtons location="both">
+<apex:commandButton value="Save" action="{!Save}" styleclass="slds-button slds-button_brand"/>
+<apex:commandButton value="Cancel" action="{!Cancel}" styleclass="slds-button slds-button_brand"/>
+</apex:pageBlockButtons>
+<apex:pageBlockSection title="Information" columns="1">
+
+ <apex:inputfield value="{!Suggestion__c.name}" styleclass="slds-input" />
+ <apex:inputfield value="{!Suggestion__c.Suggestion_Description__c}" />
+
+</apex:pageBlockSection>
+</apex:pageblock>
+</apex:form>
+</apex:page>

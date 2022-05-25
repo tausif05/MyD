@@ -1,0 +1,17 @@
+<aura:component controller="AccountController" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+	 <aura:attribute type="Account[]" name="acctList"/>
+    <aura:attribute name="mycolumns" type="List"/>
+     <aura:attribute name="errors" type="Object" default="[]"/>
+     <aura:attribute name="draftValues" type="Object" default="[]"/>
+    
+    <aura:handler name="init" value="{!this}" action="{!c.fetchAcc}"/>
+     
+    <lightning:datatable aura:id="dtTable" data="{! v.acctList }"
+                         columns="{! v.mycolumns }"
+                         keyField="id"
+                         errors="{! v.errors }"
+                         hideCheckboxColumn="true"
+                         draftValues="{!v.draftValues }"
+                         onsave="{!c.SaveEdition }"
+                         />
+</aura:component>
